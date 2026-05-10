@@ -195,4 +195,4 @@ gcc -o SpringWorkers Threads_GTK.c -lpthread $(pkg-config --cflags --libs gtk+-3
 ./SpringWorkers.exe
 ```
 ----
-See the report for further explanation of project.--
+See the report for further explanation of project.
