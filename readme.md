@@ -188,7 +188,8 @@ gcc -o SpringWorkers Threads_GTK.c -lpthread $(pkg-config --cflags --libs gtk+-3
 ```bash
 ./SpringWorkers
 ```
-
+----
+See the report for further explanation of project. 
 #### Windows (MSYS2)
 
 ```bash
