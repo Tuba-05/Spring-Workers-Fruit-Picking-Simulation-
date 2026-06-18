@@ -198,7 +198,7 @@ gcc -o SpringWorkers Threads_GTK.c -lpthread $(pkg-config --cflags --libs gtk+-3
 See the report for further explanation of project.
 
 
-### Contributor
+### Contributors
 
 **Tuba Naushad**  
 **Khadija Sehar**  
