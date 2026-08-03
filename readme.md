@@ -1,5 +1,12 @@
 # 🍎 Project: Spring Workers (Fruit Picking Simulation)
 
+<p align="center">
+  <img src="https://img.shields.io/badge/C_Language-00599C?style=for-the-badge&logo=c&logoColor=white" alt="C Language" />
+  <img src="https://img.shields.io/badge/GTK3-7FE71E?style=for-the-badge&logo=gnome&logoColor=black" alt="GTK3" />
+  <img src="https://img.shields.io/badge/POSIX_Threads-000000?style=for-the-badge&logo=linux&logoColor=white" alt="Pthreads" />
+  <img src="https://img.shields.io/badge/Operating_Systems-FF9900?style=for-the-badge&logo=cpu&logoColor=white" alt="OS Concepts" />
+</p>
+
 ## **📝 Overview**
 
 This project is a visual simulation of a fruit farm based on the **Producer-Consumer Problem** in Operating Systems.  
