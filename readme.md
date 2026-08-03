@@ -1,3 +1,4 @@
+
 # 🍎 Project: Spring Workers (Fruit Picking Simulation)
 
 <p align="center">
@@ -7,208 +8,123 @@
   <img src="https://img.shields.io/badge/Operating_Systems-FF9900?style=for-the-badge&logo=cpu&logoColor=white" alt="OS Concepts" />
 </p>
 
-## **📝 Overview**
+This project is a GUI-based visual simulation of a fruit farm demonstrating the classic **Producer-Consumer Problem** in Operating Systems. 
 
-This project is a visual simulation of a fruit farm based on the **Producer-Consumer Problem** in Operating Systems.  
-In this simulation, **3 Picker threads** act as producers by picking fruits and placing them into a shared storage area, while **1 Loader thread** acts as the consumer by collecting and loading the fruits.  
-The main objective of the project is to demonstrate **Multi-threading**, **thread synchronization**, and efficient resource sharing using **POSIX Threads (Pthreads)** without causing conflicts or data inconsistency.
+In this simulation:
+- **3 Picker threads** act as *producers* by picking fruits and placing them into a shared storage area.
+- **1 Loader thread** acts as the *consumer* by collecting and loading the fruits.
 
----
-
-## **💻 Setup Instructions**
-Before running this project, you must install the **GCC Compiler** for the C language, regardless of which operating system you are using.
-The GCC compiler is required to compile and run the C source code.
+The main objective is to showcase **Multi-threading**, **thread synchronization**, and efficient resource sharing using **POSIX Threads (Pthreads)** with Mutex locks to prevent data races and inconsistency.
 
 ---
 
-### **🪟 For Windows Users (Recommended Path)**
-If you are on Windows, follow these steps to prepare your environment:
+## 📑 Table of Contents
+1. [Key Concepts Demonstrated](#-key-concepts-demonstrated)
+2. [Folder Structure](#-folder-structure)
+3. [Setup & Installation](#-setup--installation)
+4. [Compilation & Run](#-compilation--run)
+5. [Contributors](#-contributors)
 
-### 1. Install MSYS2
+---
 
-Download it from: https://www.msys2.org/
+## 🧠 Key Concepts Demonstrated
+* **Multithreading:** Concurrent execution of tasks using `pthread_create`.
+* **Mutual Exclusion (Mutex):** Implementation of `pthread_mutex_t` to lock critical sections.
+* **Thread Synchronization:** Using condition variables (`pthread_cond_t`) to orchestrate picker and loader loops.
+* **GUI Development in C:** Utilizing **GTK+ 3.0** to render a real-time progress simulation of the farm.
 
-This provides the necessary tools to run C code on Windows.
+---
 
-### 2. Install GCC & GTK
-
-Open the **MSYS2 MinGW 64-bit** terminal and run:
-
-```bash
-pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-gtk3 pkg-config
+## 📂 Folder Structure
+```text
+Spring-Workers/
+├── Threads_GTK.c        # Main C source file containing GUI & Pthreads logic
+├── Project_Report.pdf   # Academic project report (detailed explanation)
+└── README.md            # Documentation readme
 ```
 
-### 3. Install WSL(Windows Subsystem for Linux)
-
-Open **PowerShell as Administrator** and type:
-
-```powershell
-wsl --install
-```
-
-This adds a Linux layer (Ubuntu) to your Windows system.
-
-### 4. Install Ubuntu
-
-After restarting, open PowerShell again and run:
-
-```powershell
-wsl --install -d Ubuntu-24.04
-```
-
-Note: After installation, a terminal window will pop up. It will ask you to create a Username and Password. Keep these safe!
-
-### 5. Install VS Code & Connect to WSL
-
-#### Install VS Code
-Download and install VS Code from the official website:
-
-- [Visual Studio Code](https://code.visualstudio.com?utm_source=chatgpt.com)
-
 ---
 
-#### Install the WSL Extension
+## 💻 Setup & Installation
 
-1. Open VS Code.
-2. Click on the **Extensions** icon on the left sidebar (the 4 squares icon).
-3. Search for **"WSL"**.
-4. Click **Install** on the extension named **Remote - WSL**.
+Before compiling, you need a **GCC compiler** and **GTK+ 3.0 dev libraries** installed on your machine.
 
----
+### 🪟 For Windows Users (via WSL or MSYS2)
 
-#### Connect to Your Ubuntu Environment
-
-1. Look at the bottom-left corner of the VS Code window.
-2. You will see a small blue or green button that looks like this:
-
-   ```text
-   ><
+#### Path A: Using WSL (Recommended)
+1. Open PowerShell as Administrator and install WSL (Ubuntu):
+   ```powershell
+   wsl --install
+   wsl --install -d Ubuntu-24.04
    ```
-3. Click this button. A command menu will open at the top of your screen.
-4. Select one of the following options:
-    - Connect to WSL
-    - New WSL Window using Distro... → then choose Ubuntu-24.04
+2. Once installed, open your WSL Ubuntu terminal and run:
+   ```bash
+   sudo apt update && sudo apt install build-essential libgtk-3-dev pkg-config
+   ```
+3. Open VS Code, install the **WSL Extension (Remote - WSL)**, and connect your workspace using the green `><` button in the bottom-left corner of VS Code.
 
-##### **Success Check**
-
-Once connected, the bottom-left corner of VS Code should display:
-```
-WSL: Ubuntu-24.04
-```
-Now, whenever you open a terminal inside VS Code using:
-```
-Ctrl + ~
-```
-it will automatically open your Ubuntu Linux terminal.
-
-This allows you to run your C and GTK code seamlessly inside the Linux environment.
+#### Path B: Using MSYS2
+1. Download and install MSYS2 from [msys2.org](https://www.msys2.org/).
+2. Open **MSYS2 MinGW 64-bit** terminal and run:
+   ```bash
+   pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-gtk3 pkg-config
+   ```
 
 ---
 
-### **🐧 For Linux Users**
-If you are on Linux System, follow these steps to prepare your environment:
-
+### 🐧 For Linux Users
 Open your terminal and run:
-
 ```bash
 sudo apt update && sudo apt install build-essential libgtk-3-dev pkg-config
 ```
 
 ---
 
-### **🍎 For macOS Users**
-If you are on macOS, follow these steps to prepare your environment:
+### 🍎 For macOS Users
+1. Open your terminal and install **Homebrew** (if not installed):
+   ```bash
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```
+2. Install GCC and GTK3 libraries via Brew:
+   ```bash
+   brew install gtk+3 pkg-config gcc
+   ```
 
-### 1. Open Terminal
-
-Open the **Terminal** app on your Mac.
-
-Shortcut:
-- Press `Command + Space`
-- Search for `Terminal`
-
-### 2. Install Homebrew
-
-Run this command:
-
-```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-
-### 3. Enter Password
-
-Type your macOS password if prompted and press **Enter**.
-
-### 4. Verify Installation
-
-Run:
-
-```bash
-brew --version
-```
-
-If installed successfully, it will show the Homebrew version.
-
-#### Official Website
-
-https://brew.sh/
-
-### 5. Install GCC & GTK   
-
-```bash
-brew install gtk+3 pkg-config gcc
-```
 ---
 
-## **🏗️ Compile & Run**
+## 🏗️ Compilation & Run
 
-
-### 1. Open Your Terminal
-
-Use one of the following:
-
-- WSL
-- MSYS2
-- Linux Terminal
-- macOS Terminal
-- VScode Terminal
-
-### 2. Navigate to the Project Folder
-
-Go to the folder where you saved the file:
-
-```text
-Threads_GTK.c
+### 1. Navigate to Project Directory
+Navigate to the folder containing your source file (`Threads_GTK.c`):
+```bash
+cd path/to/Spring-Workers
 ```
 
-### 3. Compile the Program
-
-Run:
+### 2. Compile the Program
+Compile using `gcc` and link both `pthread` and `gtk+-3.0` configurations:
 ```bash
 gcc -o SpringWorkers Threads_GTK.c -lpthread $(pkg-config --cflags --libs gtk+-3.0)
 ```
 
-### 4. Run the Program
+### 3. Run the Executable
 
-#### Linux / WSL / macOS
-
-```bash
-./SpringWorkers
-```
+- **On Linux / WSL / macOS:**
+  ```bash
+  ./SpringWorkers
+  ```
  
-#### Windows (MSYS2)
+- **On Windows (MSYS2):**
+  ```bash
+  ./SpringWorkers.exe
+  ```
 
-```bash
-./SpringWorkers.exe
+---
+
+## 👥 Contributors
+
+This academic project was collaboratively designed by:
+
+* **Tuba Naushad** 
+* **Khadija Sehar** 
+* **Tahir Ali** 
 ```
-----
-See the report for further explanation of project.
-
-
-### Contributors
-
-**Tuba Naushad**  
-**Khadija Sehar**  
-**Tahir Ali**
-
-
